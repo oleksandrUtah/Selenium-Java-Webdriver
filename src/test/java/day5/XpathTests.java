@@ -40,10 +40,23 @@ public class XpathTests extends BaseTest {
         // starts-with() method contains of first letters of the attribute value:
         String restID_XPath9 = "//*[starts-with(@name,'rest')]";
 
-        //
+        // text() method for visible text:
         String restID_XPath10 = "//*[text()='Log In']";
+
+        // last() from the kind of list
         String restID_XPath11 = "(//input[@type='text'])[last()-1]";
+
+        // position() from the kind of list
         String restID_XPath12 = "(//*[@type='text'])[position()=1]";
+
+        // using index starts from [1]
+        String restID_XPath12A = "(//*[@type='text'])[1]";
+
+        // /following::
+        String restID_XPath13 = "(//*[@name='restaurant_id']/following::input)";
+
+        // //preceding::
+        String restID_XPath14 = "(//*[@name='email']//preceding::input)";
 
         openPage(url); //I will make a brake point near to the openPage.
     }
