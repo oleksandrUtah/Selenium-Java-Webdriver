@@ -79,5 +79,16 @@ public class BaseTest {
         Assert.assertTrue(resultSpanElement.isDisplayed());
 
     }
+    /*public void assertResults(String xpathValue) {
+
+        By resultsElement = By.xpath(xpathValue);
+
+        WebElement resultSpanElement = driver.findElement(resultsElement);
+
+        explicitWait(driver, resultsElement);
+
+        Assert.assertTrue(resultSpanElement.isDisplayed());
+
+    }*/
 
 }

@@ -14,7 +14,7 @@ public class YahooSearchTest extends BaseTest {
     By searchBox = By.id("uh-search-box");
 
     String cssValue = "#results .compPagination span";
-
+    //String xpathValue = "// span [contains(@id, 'yui')]";
 
 
     @Test
@@ -28,6 +28,8 @@ public class YahooSearchTest extends BaseTest {
         submitSearch(searchBox);
 
         assertResults(cssValue);
+        //assertResults(xpathValue);
+
 
     }
 
