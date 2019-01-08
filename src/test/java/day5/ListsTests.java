@@ -13,9 +13,7 @@ public class ListsTests extends BaseTest {
         List<Integer> list = new ArrayList<Integer>();
 
         list.add(1);
-
         list.add(2);
-
         list.add(3);
     }
     @Test
@@ -35,7 +33,6 @@ public class ListsTests extends BaseTest {
         List<WebElement> listOfElements = new ArrayList<WebElement>();
 
         listOfElements.add(element1);
-
         listOfElements.add(element2);
     }
     @Test
