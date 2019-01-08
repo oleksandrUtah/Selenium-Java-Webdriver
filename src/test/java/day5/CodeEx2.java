@@ -7,7 +7,7 @@ import java.util.TreeSet;
 
 public class CodeEx2 {
 
-    //input string "welcometojava" // if the parameter is 3 then it's "wel", "elc", "lco"
+    //input string "welcometojava" // if the parameter is 3 then it's "wel", "elc", "lco" ...
 
     //parameter - length of substring
 
