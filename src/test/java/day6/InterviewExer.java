@@ -3,14 +3,25 @@ package day6;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class InterviewExer {
     @Test
     public void test_001() {
 
         for (int i = 1; i <= 10; i++) {
-            if (i%2==0) System.out.println(i);
+            if (i%2==0)
+                System.out.println(i);
+        }
+    }
+    @Test
+    public void test_002() {
+        List<Integer> list = new ArrayList<Integer>();
+        for (int i = 1; i <= 10; i++) {
+            if (i%2==0)
+                list.add(i);
         }
     }
     @Test
