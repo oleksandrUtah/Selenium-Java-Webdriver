@@ -1,16 +1,10 @@
 package day6;
 
-
 import day4.BaseTest;
 import org.testng.annotations.Test;
 
-
 public class RestoranteTests  extends BaseTest {
-
-
-
     @Test
-
     public void test_CreateUserAndLogin() {
 
         String rest_Id = "";
@@ -20,7 +14,6 @@ public class RestoranteTests  extends BaseTest {
         String password = "";
 
 
-
         String url = "";
 
         String params = "";
@@ -28,9 +21,7 @@ public class RestoranteTests  extends BaseTest {
         String requestBody = "";
 
 
-
         String response = executeHttpRequest(url, params, requestBody);
-
 
 
         rest_Id = getKeyValue("rest_Id", response);
@@ -39,15 +30,7 @@ public class RestoranteTests  extends BaseTest {
 
         password = getKeyValue("password", response);
 
-
-
-
-
         openPage("http://52.9.182.211:3001/v1/log-in");
-
-
-
-
 
     }
 

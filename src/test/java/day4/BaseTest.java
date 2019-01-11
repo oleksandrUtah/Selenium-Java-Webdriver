@@ -68,7 +68,7 @@ public class BaseTest {
 
     }
 
-    public void assertResults(String cssValue) {
+    /*public void assertResults(String cssValue) {
 
         By resultsElement = By.cssSelector(cssValue);
 
@@ -78,8 +78,8 @@ public class BaseTest {
 
         Assert.assertTrue(resultSpanElement.isDisplayed());
 
-    }
-    /*public void assertResults(String xpathValue) {
+    }*/
+    public void assertResults(String xpathValue) {
 
         By resultsElement = By.xpath(xpathValue);
 
@@ -89,6 +89,6 @@ public class BaseTest {
 
         Assert.assertTrue(resultSpanElement.isDisplayed());
 
-    }*/
+    }
 
 }
