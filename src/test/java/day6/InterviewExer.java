@@ -70,7 +70,6 @@ public class InterviewExer {
     }
     @Test
     public void test_Actor() {
-
         Actor actor = new Actor("Alex", "Barabash");
     }
 }
