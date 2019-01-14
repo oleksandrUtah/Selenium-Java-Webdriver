@@ -158,7 +158,6 @@ public class GoogleSearch {
         WebElement element = driver.findElement(searchInput);
 
         element.sendKeys(queryString);
-
     }
 
     private void openMainPage() {
