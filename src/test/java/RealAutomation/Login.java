@@ -2,6 +2,7 @@ package RealAutomation;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.*;
 import org.testng.Assert;
 
@@ -11,17 +12,27 @@ public class Login extends BaseTest{
     private String username = "admin";
     private String password = "Password";
 
+
     private By inputLogin = By.id("txtUsername");
     private By inputPassword = By.id("txtPassword");
     private By submitLog = By.id("btnLogin");
     private By resultsElement = By.id("welcome");
     private By logoutElement = By.linkText("Logout");
     private By spanElement = By.id("spanMessage");
+    /*
+    @FindBy(id="txtUsername") WebElement inputLogin;
+    @FindBy(id="txtPassword") WebElement inputPassword;
+    @FindBy(id="btnLogin") WebElement submitLog;
+    @FindBy(id="welcome") WebElement resultsElement;
+    @FindBy(linkText = "Logout") WebElement logoutElement;
+    @FindBy(id="spanMessage") WebElement spanElement;
+     */
+
 
 
 
     @Test(priority = 1) //Happy Path: Verify "Username" = "admin" + "Password" = "Password".
-    public void loginSuite1() {
+    private void loginSuite1() {
         testPattern(baseUrl, username, password, inputLogin, inputPassword, submitLog, resultsElement, logoutElement);
     }
     @Test(priority = 2) //Positive: Verify masking Password type (type="password").
