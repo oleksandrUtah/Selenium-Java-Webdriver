@@ -1,11 +1,8 @@
 package RealAutomation;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import java.util.concurrent.TimeUnit;
@@ -29,7 +26,6 @@ public class BaseTest {
             System.err.println("Caught0 RuntimeException: " + e1.getMessage());
         }
     }
-
     @AfterSuite
     public void terminateBrowser() {
         try {
@@ -39,22 +35,21 @@ public class BaseTest {
             System.err.println("Caught0 RuntimeException: " + e1.getMessage());
         }
     }
-    public void testPattern(String baseUrl, String username, String password, By inputLogin, By inputPassword,
-                            By submitLog, By resultsElement, By logoutElement){
+    public void testPattern(String baseUrl, String username, String password, By inputLogin,
+                            By inputPassword, By submitLog, By resultsElement, By logoutElement){
         openLoginPage(baseUrl);
         typeCredentials(username, password, inputLogin, inputPassword);
         submitLogin(submitLog);
         assertResults(resultsElement);
         logOut(resultsElement, logoutElement);
     }
-    public void testPatternNegative(String baseUrl, String username, String password, By inputLogin, By inputPassword,
-                            By submitLog, By spanElement){
+    public void testPatternNegative(String baseUrl, String username, String password,
+                             By inputLogin, By inputPassword, By submitLog, By spanElement){
         openLoginPage(baseUrl);
         typeCredentials(username, password, inputLogin, inputPassword);
         submitLogin(submitLog);
         assertResultsNegative(spanElement);
     }
-
     public void explicitWait(WebDriver driver, By element){
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
@@ -73,8 +68,6 @@ public class BaseTest {
         WebElement element = driver.findElement(submitLog);
         element.submit();
     }
-
-
     public void assertResults(By resultsElement) {
         WebElement resultElement = driver.findElement(resultsElement);
         explicitWait(driver, resultsElement);
@@ -86,7 +79,6 @@ public class BaseTest {
         explicitWait(driver, spanElement);
         Assert.assertTrue(spanMessage.isDisplayed());
         System.out.println(spanMessage.getText());
-
     }
     public void logOut(By resultsElement, By logoutElement) {
         WebElement resultElement = driver.findElement(resultsElement);

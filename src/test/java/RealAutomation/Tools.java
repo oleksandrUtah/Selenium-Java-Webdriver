@@ -10,7 +10,8 @@ public class Tools {
                 ExpectedCondition<Boolean>() {
 
                     public Boolean apply(WebDriver driver) {
-                        return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");
+                        return ((JavascriptExecutor)driver).executeScript(
+                                "return document.readyState").equals("complete");
                     }
 
                 };
