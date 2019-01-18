@@ -34,7 +34,6 @@ public class SignUpPage extends BaseTestPF{
     //Positive: Verify masking Password type (type="password").
     public void loginSuite2() {
         openLoginPage(baseUrl);
-
         System.out.println("Password type: " + inputPassword.getAttribute("type"));
         Assert.assertEquals(inputPassword.getAttribute("type"), "password");
     }
