@@ -34,6 +34,7 @@ public class ListsTests extends BaseTest {
 
         listOfElements.add(element1);
         listOfElements.add(element2);
+
     }
     @Test
     public void test003() {
