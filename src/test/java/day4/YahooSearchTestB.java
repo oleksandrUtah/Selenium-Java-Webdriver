@@ -16,7 +16,8 @@ public class YahooSearchTestB extends BaseTest{
 
 
         openPage(url);
-        sendKeysTo(searchBox, queryString);
+        //sendKeysTo(searchBox, queryString);
+        sendKeysTo(YahooMainPage.searchBox, queryString);
         submitSearch(searchBox);
         assertResults();
     }
