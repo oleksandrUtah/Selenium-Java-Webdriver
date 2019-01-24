@@ -17,7 +17,7 @@ public class YahooSearchTestB extends BaseTest{
 
         openPage(url);
         //sendKeysTo(searchBox, queryString);
-        sendKeysTo(YahooMainPage.searchBox, queryString);
+        sendKeysTo(YahooMainPage.searchBox, queryString);//Extract locator to YahooMainPage class
         submitSearch(searchBox);
         assertResults();
     }
