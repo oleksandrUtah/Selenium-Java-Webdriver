@@ -1,21 +1,28 @@
-package RealAutomation;
-import org.openqa.selenium.By;
+package pageFactoryExamples;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
-public class Login extends BaseTest{
+public class SignUpPage extends BaseTestPF{
 
     private String baseUrl = "http://hrm.seleniumminutes.com";
     private String username = "admin";
     private String password = "Password";
 
-    private By inputLogin = By.id("txtUsername");
-    private By inputPassword = By.id("txtPassword");
-    private By submitLog = By.id("btnLogin");
-    private By resultsElement = By.id("welcome");
-    private By logoutElement = By.linkText("Logout");
-    private By spanElement = By.id("spanMessage");
+    //All WebElements are identified by @FindBy annotation:
+    @FindBy(id="txtUsername")
+    private WebElement inputLogin;
+    @FindBy(id="txtPassword")
+    private WebElement inputPassword;
+    @FindBy(id="btnLogin")
+    private WebElement submitLog;
+    @FindBy(id="welcome")
+    private WebElement resultsElement;
+    @FindBy(css = "#welcome-menu > ul:nth-child(1) > li:nth-child(3) > a:nth-child(1)")
+    private WebElement logoutElement;
+    @FindBy(id="spanMessage")
+    private WebElement spanElement;
 
     @Test(priority = 1)
     //Happy Path: Verify "Username" = "admin" + "Password" = "Password".
@@ -27,9 +34,8 @@ public class Login extends BaseTest{
     //Positive: Verify masking Password type (type="password").
     public void loginSuite2() {
         openLoginPage(baseUrl);
-        WebElement ps = driver.findElement(inputPassword);
-        System.out.println("Password type: " + ps.getAttribute("type"));
-        Assert.assertEquals(ps.getAttribute("type"), "password");
+        System.out.println("Password type: " + inputPassword.getAttribute("type"));
+        Assert.assertEquals(inputPassword.getAttribute("type"), "password");
     }
     @Test(priority = 3)
     //Positive: Make sure, that "Username" not Case Sensitive.

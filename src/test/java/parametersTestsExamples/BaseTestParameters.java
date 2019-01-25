@@ -1,5 +1,5 @@
-package PageFactoryExamples;
-import RealAutomation.Tools;
+package parametersTestsExamples;
+import realAutomation.Tools;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -7,8 +7,7 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import java.util.concurrent.TimeUnit;
-
-public class BaseTestPF {
+public class BaseTestParameters {
     protected WebDriver driver;
 
     @BeforeSuite
