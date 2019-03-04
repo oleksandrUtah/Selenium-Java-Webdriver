@@ -5,6 +5,21 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 
 public class IntExer1 {
+    int x = 10;  // Create a class variables (attributes)
+    int y = 7;
+
+    // Create a class constructor by default:
+    public IntExer1() {
+        int y = 5;
+        x = y;
+        System.out.println("new variable x = " + x);
+    }
+
+    public IntExer1(int y) {
+        x = y;
+        System.out.println("new variablePar x = " + x);
+    }
+
 
     @Test (priority = 001)              // Loop that will return even numbers from 1-10
     public void testPrintEvenNumbers() {
@@ -41,6 +56,13 @@ public class IntExer1 {
             if(eachChar== 'l') result++;
         }
         System.out.println(result);
+    }
+    @Test (priority = 005)
+    public void testConstructor1() {
+        IntExer1 object = new IntExer1();
+        System.out.println("class variable x value = " + object.x);
+        IntExer1 objectPar = new IntExer1(7);
+        System.out.println("class variable x value = " + objectPar.x);
     }
 }
 

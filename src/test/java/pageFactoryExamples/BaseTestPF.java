@@ -7,7 +7,37 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import java.util.concurrent.TimeUnit;
+/*
+The PageFactory class
+Page Factory class is an inbuilt Page Object Model concept for Selenium WebDriver.
+package org.openqa.selenium.support.PageFactory;
+PageFactory reduce duplicate test code for finding WebElement.
+We use annotations @FindBy  in class A.
+We use .initElements() method in class B.
+Step 1. PageFactory class we use in class A to find WebElement.
+@FindBy can accept all locator strategies from id to xpath. Example:
+Before: 		private By inputLogin = By.id("txtUsername");
+After:  		@FindBy(id="txtUsername")
+            private WebElement inputLogin;
+Step 2. Also we use PageFactory class in class B as initElements() method to initialize web elements.
+This method will used after driver creating inside of @BeforeSuite annotation. Example:
+	PageFactory.initElements(driver, this);
+Advantages of PageFactory class: we can create tests with less keystroke. Compare:
+Before:
+WebElement element1 = driver.findElement(inputLogin);
+element1.sendKeys(username);
+After:
+	inputLogin.sendKeys(username);
 
+Examples without PageFactory class:
+1.	Class A.  https://github.com/oleksandrUtah/Selenium-Java-Webdriver/blob/master/src/test/java/RealAutomation/Login.java
+2.	Class B. https://github.com/oleksandrUtah/Selenium-Java-Webdriver/blob/master/src/test/java/RealAutomation/BaseTest.java
+
+Examples with PageFactory class:
+1.	Class A.  https://github.com/oleksandrUtah/Selenium-Java-Webdriver/blob/master/src/test/java/PageFactoryExamples/SignUpPage.java
+2.	Class B. https://github.com/oleksandrUtah/Selenium-Java-Webdriver/blob/master/src/test/java/PageFactoryExamples/BaseTestPF.java
+
+*/
 public class BaseTestPF {
     protected WebDriver driver;
 
