@@ -1,4 +1,8 @@
 package pageFactoryExamples;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import realAutomation.Tools;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -6,6 +10,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 /*
 The PageFactory class
@@ -116,5 +124,14 @@ public class BaseTestPF {
         resultsElement.click();
         explicitWait(driver, logoutElement);
         logoutElement.click();
+    }
+    public String ExcelRead (int indexSheet, int indexRow, int indexCell) throws IOException {
+        FileInputStream fis = new FileInputStream("D:\\2019\\MyInterview_questions_31\\ExcelSheet.xlsx");
+        XSSFWorkbook workbook = new XSSFWorkbook(fis);
+        XSSFSheet sheet = workbook.getSheetAt(indexSheet);
+        Row row = sheet.getRow(indexRow);
+        Cell cell = row.getCell(indexCell);
+        String cellval = cell.getStringCellValue();
+        return cellval;
     }
 }
