@@ -15,7 +15,7 @@ public class BaseTest {
     public void suiteSetup(){
         System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\geckodriver.exe");
         driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
     }
     public void explicitWait(WebDriver driver, By element){
         WebDriverWait wait = new WebDriverWait(driver, 10);
