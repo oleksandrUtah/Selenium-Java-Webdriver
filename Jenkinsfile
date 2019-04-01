@@ -24,14 +24,14 @@ pipeline {
                  stage('Four') {
                  parallel { 
                            stage('Unit Test') {
-                           steps {
+                                steps {
                                 echo "Running the unit test..."
+                           	}
                            }
-                           }
-                            stage('Integration test') {                              
-                            steps {
+                           stage('Integration test') {                              
+                                steps {
                                 echo "Running the integration test..."
-                              }
+                              	}
                            }
                            }
                            }
