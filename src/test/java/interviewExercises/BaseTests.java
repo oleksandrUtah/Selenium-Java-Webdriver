@@ -1,4 +1,4 @@
-package InterviewExercises;
+package interviewExercises;
 
 import day2.Tools;
 import org.openqa.selenium.By;
