@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.*;
 public class AllLinks {
-    String baseUrl = "https://www.google.com/";
+    String baseUrl = "https://stgconsulting.com/job/qa-automation-engineer/";
     WebDriver driver;
     @BeforeTest
     public void launchBrowser() {
