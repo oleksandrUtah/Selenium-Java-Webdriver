@@ -43,8 +43,8 @@ Examples without PageFactory class:
 
 Examples with PageFactory class:
 1.	Class A.  https://github.com/oleksandrUtah/Selenium-Java-Webdriver/blob/master/src/test/java/PageFactoryExamples/SignUpPage.java
-2.	Class B. https://github.com/oleksandrUtah/Selenium-Java-Webdriver/blob/master/src/test/java/PageFactoryExamples/BaseTestPF.java
-
+2.  Class B.  https://github.com/oleksandrUtah/Selenium-Java-Webdriver/blob/master/src/test/java/PageFactoryExamples/BaseTestPF.java
+Examples with PageFactory class and
 */
 public class BaseTestPF {
     protected WebDriver driver;
@@ -55,7 +55,7 @@ public class BaseTestPF {
                 "\\src\\test\\resources\\geckodriver.exe");
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        //This initElements method will create all WebElements:
+        //This initElements method will initialize all WebElements:
         PageFactory.initElements(driver, this);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }

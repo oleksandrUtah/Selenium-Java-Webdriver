@@ -26,7 +26,7 @@ public class SignUpPage extends BaseTestPF{
 
     @Test(priority = 1)
     //Happy Path: Verify "Username" = "admin" + "Password" = "Password".
-    private void loginSuite1() {
+    public void loginSuite1() {
         testPattern(baseUrl, username, password, inputLogin, inputPassword, submitLog,
                 resultsElement, logoutElement);
     }

@@ -32,7 +32,7 @@ public class SignUpPageExcel extends BaseTestPF{
 
     @Test (priority = 1)
     //Happy Path: Verify "Username" = "admin" + "Password" = "Password".
-    private void loginSuite1() throws IOException {
+    public void loginSuite1() throws IOException {
         username = ExcelRead(1,1, 1);
         password = ExcelRead(1,2, 1);
         testPattern(baseUrl, username, password, inputLogin, inputPassword, submitLog,

@@ -1,87 +1,143 @@
 package parametersTestsExamples;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
+
 public class LoginParameters extends BaseTestParameters{
-    private String baseUrl = "http://hrm.seleniumminutes.com";
-    private String username;
+    private String Url = "https://www.shocase.com/go/signup";
+    private String email;
     private String password;
-
+    private Actions a;
     //All WebElements are identified by @FindBy annotation:
-    @FindBy(id="txtUsername")
+    @FindBy(linkText = "SIGN IN")
+    private WebElement loginShocase;
+    @FindBy(xpath = "//input[@name='email_address']")
     private WebElement inputLogin;
-    @FindBy(id="txtPassword")
+    @FindBy(xpath = "//input[@name='j_password']")
     private WebElement inputPassword;
-    @FindBy(id="btnLogin")
+    @FindBy(xpath = "//button[@name='submit_login_button']")
     private WebElement submitLog;
-    @FindBy(id="welcome")
+    @FindBy(xpath = "//a[@class='sis-header-profile']")
     private WebElement resultsElement;
-    @FindBy(css = "#welcome-menu > ul:nth-child(1) > li:nth-child(3) > a:nth-child(1)")
-    private WebElement logoutElement;
-    @FindBy(id="spanMessage")
-    private WebElement spanElement;
 
-    @Parameters ({ "username", "password" })
+
+    @FindBy(linkText = "Sign out")
+    private WebElement outElement;
+
     @Test(priority = 1)
-    //Happy Path: Verify "Username" = "admin" + "Password" = "Password".
-    private void loginSuite1() {
-        testPattern(baseUrl, username, password, inputLogin, inputPassword, submitLog,
-                resultsElement, logoutElement);
+    @Parameters ({ "email", "password"})
+    //Happy Path: Verify "Email" = "koz84075+007@gmail.com" + "Password" = "1234567a".
+    public void loginSuite1(String email, String password) throws InterruptedException{
+
+
+        testPattern(Url, loginShocase, email, password, inputLogin, inputPassword, submitLog, resultsElement, outElement);
+
+        /*Actions a = new Actions(driver);
+        WebDriverWait wait1 = new WebDriverWait(driver, 30);
+        wait1.until(ExpectedConditions.visibilityOf(resultsElement));
+
+
+        a.moveToElement(resultsElement).build().perform();
+
+
+        wait1.until(ExpectedConditions.visibilityOf(outElement));
+
+        outElement.click();
+        Thread.sleep(1000);*/
     }
     @Test(priority = 2)
+
     //Positive: Verify masking Password type (type="password").
     public void loginSuite2() {
-        openLoginPage(baseUrl);
+
+        openLoginPage(Url, loginShocase);
         System.out.println("Password type: " + inputPassword.getAttribute("type"));
         Assert.assertEquals(inputPassword.getAttribute("type"), "password");
+        System.out.println(email + " " + password);
+
     }
     @Test(priority = 3)
-    //Positive: Make sure, that "Username" not Case Sensitive.
-    public void loginSuite3() {
-        username = "Admin";
-        testPattern(baseUrl, username, password, inputLogin, inputPassword, submitLog,
-                resultsElement, logoutElement);
+    @Parameters ({ "email3", "password"})
+    //Positive: Make sure, that "Email" not Case Sensitive.
+    public void loginSuite3(String email3, String password) throws InterruptedException{
+        email = email3;
+
+        testPattern(Url, loginShocase, email, password, inputLogin, inputPassword, submitLog, resultsElement, outElement);
+        /*Actions a = new Actions(driver);
+        WebDriverWait wait3 = new WebDriverWait(driver, 30);
+        wait3.until(ExpectedConditions.visibilityOf(resultsElement));
+
+
+        a.moveToElement(resultsElement).build().perform();
+
+
+        wait3.until(ExpectedConditions.visibilityOf(outElement));
+
+        outElement.click();
+        Thread.sleep(1000);*/
     }
     @Test(priority = 4)
+    @Parameters ({"email", "password4"})
     //Positive: Make sure, that "Password" not Case Sensitive.
-    public void loginSuite4() {
-        username = "admin";
-        password = "password";
-        testPattern(baseUrl, username, password, inputLogin, inputPassword, submitLog,
-                resultsElement, logoutElement);
+    public void loginSuite4(String email, String password4) throws InterruptedException{
+
+        password = password4;
+        testPattern(Url, loginShocase, email, password, inputLogin, inputPassword, submitLog, resultsElement, outElement);
+        /*Actions a = new Actions(driver);
+        WebDriverWait wait4 = new WebDriverWait(driver, 30);
+        wait4.until(ExpectedConditions.visibilityOf(resultsElement));
+
+
+        a.moveToElement(resultsElement).build().perform();
+
+
+        wait4.until(ExpectedConditions.visibilityOf(outElement));
+
+        outElement.click();
+        Thread.sleep(1000);*/
     }
     @Test(priority = 5)
+    @Parameters ({"email", "password5"})
     //Negative: Verify registered "Username" + uncreated "Password" cannot be used.
-    public void loginSuite5() {
-        username = "admin";
-        password = "pass";
-        testPatternNegative(baseUrl, username, password, inputLogin, inputPassword,
-                submitLog, spanElement);
+    public void loginSuite5(String email, String password5) throws InterruptedException{
+
+        password = password5;
+
+        testPatternNegative(Url, loginShocase, email, password, inputLogin, inputPassword, submitLog);
     }
     @Test(priority = 6)
+    @Parameters ({"email6", "password6"})
     //Negative: Verify unregistered "Username" + created "Password" cannot be used.
-    public void loginSuite6() {
-        username = "xxxxx";
-        password = "Password";
-        testPatternNegative(baseUrl, username, password, inputLogin, inputPassword,
-                submitLog, spanElement);
+    public void loginSuite6(String email6, String password6) throws InterruptedException{
+        email = email6;
+        password = password6;
+
+        testPatternNegative(Url, loginShocase, email, password, inputLogin, inputPassword, submitLog);
     }
     @Test(priority = 7)
+    @Parameters ({"email7", "password7"})
     //Negative: Make sure, that "Username" field is required.
-    public void loginSuite7() {
-        username = "";
-        password = "Password";
-        testPatternNegative(baseUrl, username, password, inputLogin, inputPassword,
-                submitLog, spanElement);
+    public void loginSuite7(String email7, String password7) throws InterruptedException{
+        email = email7;
+        password = password7;
+        testPatternNegative(Url, loginShocase, email, password, inputLogin, inputPassword, submitLog);
     }
     @Test(priority = 8)
+    @Parameters ({"email8", "password8"})
     //Negative: Make sure, that "Password" field is required.
-    public void loginSuite8() {
-        username = "admin";
-        password = "";
-        testPatternNegative(baseUrl, username, password, inputLogin, inputPassword,
-                submitLog, spanElement);
+    public void loginSuite8(String email8, String password8) throws InterruptedException{
+        email = email8;
+        password = password8;
+
+        testPatternNegative(Url, loginShocase, email, password, inputLogin, inputPassword, submitLog);
     }
 }

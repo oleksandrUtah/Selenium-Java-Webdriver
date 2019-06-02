@@ -1,16 +1,18 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Suite1" verbose="1" >
+<suite name = "Suite1">
+    <test name = "Test1 with Parameters">
+        <parameter name = "browserName"  value="Firefox"/>
 
-    <test name="priority = 1" >
-        <parameter name="browserName"  value="Firefox"/>
         <classes>
-            <class name="day7.ParametersTests" />
+            <class name = "day7.ParametersTests"/>
         </classes>
     </test>
-    <test name="priority = 2" >
-        <parameter name="browserName"  value="Chrome"/>
+    <test name = "Test2 with Parameters">
+        <parameter name = "browserName"  value="Chrome"/>
+
         <classes>
-            <class name="day7.ParametersTests" />
+            <class name = "day7.ParametersTests"/>
         </classes>
     </test>
 </suite>
