@@ -1,17 +1,20 @@
 package parametersTestsExamples;
-import org.openqa.selenium.interactions.Actions;
-import realAutomation.Tools;
-import org.openqa.selenium.*;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+
 import java.util.concurrent.TimeUnit;
-public class BaseTestParameters {
-
+public class BaseTestParameters {                        // Class B in POM
     public WebDriver driver;
-
     @BeforeTest
     public void suiteSetup(){
         System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") +
@@ -22,8 +25,6 @@ public class BaseTestParameters {
         PageFactory.initElements(driver, this);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
-
-
     @AfterTest
     public void terminateBrowser() {
         try {
@@ -33,7 +34,6 @@ public class BaseTestParameters {
             System.err.println("Caught0 RuntimeException: " + e1.getMessage());
         }
     }
-
     public void testPattern(String Url, WebElement loginShocase, String email, String password,
                             WebElement inputLogin, WebElement inputPassword, WebElement submitLog,
                             WebElement resultsElement, WebElement outElement) throws InterruptedException{
@@ -51,7 +51,6 @@ public class BaseTestParameters {
         submitLogin(submitLog);
         assertResultsNegative(submitLog);
     }
-
     public void explicitWait(WebDriver driver, WebElement element){
         WebDriverWait wait = new WebDriverWait(driver, 30);
         wait.until(ExpectedConditions.visibilityOf(element));
@@ -78,7 +77,6 @@ public class BaseTestParameters {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //Assert.assertTrue(resultsElement.isDisplayed());
     }
-
     public void assertResults(WebElement resultsElement) {
         explicitWait(driver, resultsElement);
         Assert.assertTrue(resultsElement.isDisplayed());
@@ -90,7 +88,6 @@ public class BaseTestParameters {
         System.out.println(submitLog.getText());
     }
     public void logOut(WebElement resultsElement, WebElement outElement, WebElement loginShocase) throws InterruptedException{
-
         explicitWait(driver, resultsElement);
         Actions a = new Actions(driver);
         explicitWait(driver, resultsElement);

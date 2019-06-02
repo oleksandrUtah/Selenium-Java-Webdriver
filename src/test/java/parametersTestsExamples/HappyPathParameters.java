@@ -6,13 +6,13 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class HappyPathParameters extends BaseTestParameters{
+       // Example of PageFactory class:
+       // We use annotations @FindBy  to find WebElements in class A.
+       // We use .initElements() method to initialize all WebElements in class B.
     private String Url = "https://www.shocase.com";
     private String email;
     private String password;
-
-
-
-    //All WebElements are identified by @FindBy annotation:
+       //All WebElements are identified by @FindBy annotation:
     @FindBy(linkText = "SIGN IN")
     private WebElement loginShocase;
     @FindBy(xpath = "//input[@name='email_address']")
@@ -23,11 +23,8 @@ public class HappyPathParameters extends BaseTestParameters{
     private WebElement submitLog;
     @FindBy(xpath = "//a[@class='sis-header-profile']")
     private WebElement resultsElement;
-
     @FindBy(linkText = "Sign out")
     private WebElement outElement;
-
-    @Parameters({ "email", "password"})
 
     @Test(priority = 1)
     //Happy Path: Verify "Username" = "admin" + "Password" = "Password".

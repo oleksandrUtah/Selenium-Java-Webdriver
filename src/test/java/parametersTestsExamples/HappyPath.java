@@ -16,7 +16,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
-public class HappyPath {
+public class HappyPath { // Example of Linear Scripting framework
     WebDriver driver;
     String URL = "https://www.shocase.com";
     @BeforeSuite
@@ -40,7 +40,6 @@ public class HappyPath {
         }
     }
     @Test
-
     public void testBasicAuth() throws InterruptedException{
 
         String email = "koz84075+007@gmail.com";
