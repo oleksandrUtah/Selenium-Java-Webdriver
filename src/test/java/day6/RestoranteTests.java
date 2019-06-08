@@ -1,6 +1,7 @@
 package day6;
 import day4.BaseTest;
 import org.testng.annotations.Test;
+
 public class RestoranteTests  extends BaseTest {
     @Test
     public void test_CreateUserAndLogin() {

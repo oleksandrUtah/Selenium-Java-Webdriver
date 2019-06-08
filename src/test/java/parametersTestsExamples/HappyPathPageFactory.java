@@ -2,14 +2,13 @@ package parametersTestsExamples;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class HappyPathParameters extends BaseTestParameters{
+public class HappyPathPageFactory extends BaseTestParameters {
        // Example of PageFactory class:
        // We use annotations @FindBy  to find WebElements in class A.
        // We use .initElements() method to initialize all WebElements in class B.
-    private String Url = "https://www.shocase.com";
+    private String Url = "https://www.shocase.com/go/signup";
     private String email;
     private String password;
        //All WebElements are identified by @FindBy annotation:
@@ -26,14 +25,14 @@ public class HappyPathParameters extends BaseTestParameters{
     @FindBy(linkText = "Sign out")
     private WebElement outElement;
 
+
     @Test(priority = 1)
     //Happy Path: Verify "Username" = "admin" + "Password" = "Password".
     public void loginSuite1() throws InterruptedException{
         email = "koz84075+007@gmail.com";
         password = "1234567a";
-
-        testPattern(Url, loginShocase, email, password, inputLogin, inputPassword, submitLog,
-                resultsElement, outElement);
         System.out.println(email + " " + password);
+        testPattern(Url, loginShocase, email, password, inputLogin, inputPassword, submitLog, resultsElement, outElement);
+
     }
 }

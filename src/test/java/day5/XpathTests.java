@@ -1,6 +1,5 @@
 package day5;
 import day4.BaseTest;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 public class XpathTests extends BaseTest {

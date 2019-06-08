@@ -3,6 +3,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 public class Tools {
     public static void waitForPageLoaded(WebDriver driver) {
         ExpectedCondition<Boolean> pageLoadCondition = new

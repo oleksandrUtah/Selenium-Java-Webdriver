@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class YahooSearchTestB extends BaseTest{
+public class YahooSearchTestB extends BaseTest {
 
     By searchBox = By.id("uh-search-box");
 

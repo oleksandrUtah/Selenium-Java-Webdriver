@@ -1,6 +1,7 @@
 package day7;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
 public class DataProvidersTests {
     @DataProvider(name = "test1")
     public Object[][] createData1() {

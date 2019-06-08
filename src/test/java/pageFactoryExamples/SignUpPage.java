@@ -4,7 +4,7 @@ import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SignUpPage extends BaseTestPF{
+public class SignUpPage extends BaseTestPF {
 
     private String baseUrl = "http://hrm.seleniumminutes.com";
     private String username = "admin";

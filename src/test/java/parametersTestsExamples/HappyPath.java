@@ -6,14 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+
 import java.util.concurrent.TimeUnit;
 
 public class HappyPath { // Example of Linear Scripting framework
@@ -22,16 +20,21 @@ public class HappyPath { // Example of Linear Scripting framework
     @BeforeSuite
 
     public void suiteSetup(){
-        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "\\src\\test\\resources\\geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") +
+                "\\src\\test\\resources\\geckodriver.exe");
         driver = new FirefoxDriver();
+        /*System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") +
+                "\\src\\test\\resources\\chromedriver.exe");
+        driver = new ChromeDriver();*/
+
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get(URL);
-        driver.manage().window().maximize();
+
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
     @AfterSuite
     public void terminateBrowser() throws InterruptedException{
-        Thread.sleep(3000);
         try {
             driver.quit();
         }
@@ -58,12 +61,13 @@ public class HappyPath { // Example of Linear Scripting framework
 
         Actions a = new Actions(driver);
         a.moveToElement(resultsElement).build().perform();
-        WebElement outElement = driver.findElement(By.linkText("Sign out"));
+        WebDriverWait wait3 = new WebDriverWait(driver, 30);
+        wait3.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.linkText("Sign out"))));
+        driver.findElement(By.linkText("Sign out")).click();
 
-        wait1.until(ExpectedConditions.visibilityOf(outElement));
-
-        outElement.click();
-        Thread.sleep(1000);
+        WebDriverWait wait2 = new WebDriverWait(driver, 30);
+        wait2.until(ExpectedConditions.visibilityOf(driver.findElement(By.linkText("SIGN IN"))));
+        Thread.sleep(5000);
     }
 }
 
