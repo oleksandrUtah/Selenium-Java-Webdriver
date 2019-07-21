@@ -1,5 +1,9 @@
 package parametersTestsExamples;
 
+import org.apache.poi.ss.usermodel.Cell; //interface
+import org.apache.poi.ss.usermodel.Row;  //interface
+import org.apache.poi.xssf.usermodel.XSSFSheet;     //class
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;  //class
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +18,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTestParameters {                        // Class B in POM
@@ -133,5 +139,14 @@ public class BaseTestParameters {                        // Class B in POM
         explicitWait(driver, loginShocase);
         System.out.println("Get Out was successful!");
         Thread.sleep(3000);
+    }
+    public String ExcelRead (int indexSheet, int indexRow, int indexCell) throws IOException {
+        FileInputStream fis = new FileInputStream("D:\\2019\\MyInterview_questions_31\\ExcelSheet.xlsx");
+        XSSFWorkbook workbook = new XSSFWorkbook(fis);
+        XSSFSheet sheet = workbook.getSheetAt(indexSheet);
+        Row row = sheet.getRow(indexRow);
+        Cell cell = row.getCell(indexCell);
+        String cellval = cell.getStringCellValue();
+        return cellval;
     }
 }
